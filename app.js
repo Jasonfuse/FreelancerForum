@@ -16,22 +16,16 @@ function randomPerson(prices){
 const people = [];
 
 function render(price){
-  const html = people.map(function(person, price) {
-    return `<div>${person.name} ${person.occupation} ${price * 30}</div>`;
+  const html = people.map(function(person) {
+   return `<div><h3>${person.name} ${person.occupation} ${price}</h3></div>`;
   });
   container.innerHTML = html.join('');
 }
 
 let price = 30;
-render(price);
 setInterval(function(){
-  console.log(price);
   const newPerson = randomPerson(price);
   people.push(newPerson);
   render(price);
+  price += 30;
 }, 1000);
-
-/*function(person){
-  console.log(`<div class='${person.name} ${person.occupation}'></div>`);
-  return `<div class='${person.name} ${person.occupation}'></div>`;
-}*/
